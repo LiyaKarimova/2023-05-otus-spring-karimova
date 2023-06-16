@@ -3,18 +3,25 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <bean id="csvQuestionParser" class="ru.otus.homework.util.CSVQuestionParser">
-        <property name="fileName" value="questions.csv"></property>
+    <bean id = "stringReader" class="ru.otus.homework.util.CSVResourceStringReader">
+        <property name="fileName" value="questions.csv"/>
     </bean>
+    <bean id = "stringToQuestionParser" class="ru.otus.homework.util.StringToQuestionParserImpl">
+        <property name="regex" value=","/>
+    </bean>
+    <bean id = "questionReader" class="ru.otus.homework.util.QuestionReaderImpl">
+        <property name="stringReader" ref="stringReader"/>
+        <property name="stringToQuestionParser" ref="stringToQuestionParser"/>
+    </bean>
+
     <bean id="questionDao" class="ru.otus.homework.dao.QuestionDaoImpl">
-        <constructor-arg ref="csvQuestionParser"></constructor-arg>
+        <constructor-arg ref="questionReader"/>
     </bean>
     <bean id="questionService" class="ru.otus.homework.service.QuestionServiceImpl">
-        <constructor-arg ref="questionDao"></constructor-arg>
+        <constructor-arg ref="questionDao"/>
     </bean>
     <bean id = "questionPrinter" class="ru.otus.homework.util.QuestionPrinter" >
-        <constructor-arg ref = "questionService"></constructor-arg>
+        <constructor-arg ref = "questionService"/>
     </bean>
 
 

@@ -3,8 +3,8 @@ package ru.otus.homework.dao;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import ru.otus.homework.domain.Question;
-import ru.otus.homework.exception.FileParseException;
-import ru.otus.homework.util.CSVQuestionParser;
+import ru.otus.homework.exception.ParseException;
+import ru.otus.homework.util.QuestionReaderImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +13,13 @@ import java.util.List;
 @Slf4j
 public class QuestionDaoImpl implements QuestionDao {
 
-    private final CSVQuestionParser csvParser;
+    private final QuestionReaderImpl csvParser;
 
     @Override
     public List<Question> getAllQuestions() {
         try {
-            return csvParser.getAllQuestionsFromFile();
-        } catch (FileParseException e) {
+            return csvParser.getAllQuestionsFromSource();
+        } catch (ParseException e) {
             log.error("Parser exception: ",e);
             return new ArrayList<>();
         }
