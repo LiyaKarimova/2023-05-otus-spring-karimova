@@ -1,8 +1,6 @@
 package ru.otus.homework.util;
 
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import ru.otus.homework.exception.StringReaderException;
 import ru.otus.homework.util.Interfaces.StringReader;
