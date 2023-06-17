@@ -2,6 +2,7 @@ package ru.otus.homework.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import ru.otus.homework.domain.Question;
 import ru.otus.homework.exception.ParseException;

@@ -1,6 +1,8 @@
 package ru.otus.homework.util;
 
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import ru.otus.homework.exception.StringReaderException;
 import ru.otus.homework.util.Interfaces.StringReader;
@@ -15,9 +17,11 @@ import java.util.List;
 @Service
 public class CSVResourceStringReader implements StringReader {
 
-    @Setter
-    private String fileName;
+    private final String fileName;
 
+    public CSVResourceStringReader(@Value("${file.fileName}") String fileName) {
+        this.fileName = fileName;
+    }
 
     @Override
     public List<String> readAllStrings() throws StringReaderException {
@@ -28,7 +32,7 @@ public class CSVResourceStringReader implements StringReader {
 
         InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
         if (is == null) {
-            throw new StringReaderException("File not found");
+            throw new StringReaderException("File not found: " + fileName);
         }
         List <String> result = new ArrayList<>();
         try (BufferedReader csvReader = new BufferedReader(new InputStreamReader(is));) {
