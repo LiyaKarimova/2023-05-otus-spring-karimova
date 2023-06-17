@@ -1,9 +1,11 @@
 package ru.otus.homework.util;
 
 import lombok.Setter;
+import org.springframework.stereotype.Service;
 import ru.otus.homework.domain.Question;
 import ru.otus.homework.util.Interfaces.StringToQuestionParser;
 
+@Service
 public class StringToQuestionParserImpl implements StringToQuestionParser {
 
     @Setter

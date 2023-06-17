@@ -1,6 +1,7 @@
 package ru.otus.homework.util;
 
 import lombok.Setter;
+import org.springframework.stereotype.Service;
 import ru.otus.homework.exception.StringReaderException;
 import ru.otus.homework.util.Interfaces.StringReader;
 
@@ -11,6 +12,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CSVResourceStringReader implements StringReader {
 
     @Setter

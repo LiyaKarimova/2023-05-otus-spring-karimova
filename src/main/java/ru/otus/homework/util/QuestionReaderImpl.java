@@ -1,6 +1,8 @@
 package ru.otus.homework.util;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Service;
 import ru.otus.homework.domain.Question;
 import ru.otus.homework.exception.ParseException;
 import ru.otus.homework.exception.StringReaderException;
@@ -10,12 +12,12 @@ import ru.otus.homework.util.Interfaces.StringToQuestionParser;
 
 import java.util.List;
 
+@Service
+@AllArgsConstructor
 public class QuestionReaderImpl implements QuestionReader {
 
-    @Setter
     private StringReader stringReader;
 
-    @Setter
     private StringToQuestionParser stringToQuestionParser;
 
     @Override
