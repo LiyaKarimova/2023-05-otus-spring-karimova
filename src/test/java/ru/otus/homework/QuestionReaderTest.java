@@ -13,7 +13,7 @@ import ru.otus.homework.util.Interfaces.StringToQuestionParser;
 import ru.otus.homework.util.QuestionReaderImpl;
 import ru.otus.homework.util.StringToQuestionParserImpl;
 
-@ExtendWith(MockitoExtension.class)
+
 public class QuestionReaderTest {
 
     private StringReader stringReader;
