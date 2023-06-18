@@ -1,6 +1,7 @@
 package ru.otus.homework.util;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.otus.homework.exception.StringReaderException;
 import ru.otus.homework.util.Interfaces.StringReader;
@@ -12,7 +13,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Component
 public class CSVResourceStringReader implements StringReader {
 
     private final String fileName;
