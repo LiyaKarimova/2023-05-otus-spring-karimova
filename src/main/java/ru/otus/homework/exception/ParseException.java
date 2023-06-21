@@ -1,6 +1,6 @@
 package ru.otus.homework.exception;
 
-public class ParseException extends Exception {
+public class ParseException extends OtusSpringException {
 
     public ParseException( Throwable cause) {
         super(cause);
