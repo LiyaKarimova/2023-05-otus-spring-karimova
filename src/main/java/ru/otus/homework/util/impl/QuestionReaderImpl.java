@@ -1,13 +1,13 @@
-package ru.otus.homework.util;
+package ru.otus.homework.util.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.otus.homework.domain.Question;
 import ru.otus.homework.exception.ParseException;
 import ru.otus.homework.exception.StringReaderException;
-import ru.otus.homework.util.Interfaces.QuestionReader;
-import ru.otus.homework.util.Interfaces.StringReader;
-import ru.otus.homework.util.Interfaces.StringToQuestionParser;
+import ru.otus.homework.util.QuestionReader;
+import ru.otus.homework.util.StringReader;
+import ru.otus.homework.util.StringToQuestionParser;
 
 import java.util.List;
 

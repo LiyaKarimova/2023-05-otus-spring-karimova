@@ -1,11 +1,12 @@
-package ru.otus.homework.dao;
+package ru.otus.homework.dao.impl;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import ru.otus.homework.dao.QuestionDao;
 import ru.otus.homework.domain.Question;
 import ru.otus.homework.exception.ParseException;
-import ru.otus.homework.util.Interfaces.QuestionReader;
+import ru.otus.homework.util.QuestionReader;
 
 import java.util.ArrayList;
 import java.util.List;

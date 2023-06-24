@@ -1,8 +1,8 @@
-package ru.otus.homework.util;
+package ru.otus.homework.util.impl;
 
 import org.springframework.stereotype.Component;
 import ru.otus.homework.domain.Answer;
-import ru.otus.homework.util.Interfaces.StringToAnswerParser;
+import ru.otus.homework.util.StringToAnswerParser;
 
 @Component
 public class StringToAnswerParserImpl implements StringToAnswerParser {

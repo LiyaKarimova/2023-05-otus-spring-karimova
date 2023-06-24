@@ -1,6 +1,8 @@
-package ru.otus.homework.service;
+package ru.otus.homework.service.impl;
 
 import org.springframework.stereotype.Service;
+import ru.otus.homework.service.IOService;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 

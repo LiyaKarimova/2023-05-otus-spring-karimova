@@ -1,4 +1,4 @@
-package ru.otus.homework.util.Interfaces;
+package ru.otus.homework.util;
 
 import ru.otus.homework.domain.Result;
 

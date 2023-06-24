@@ -1,4 +1,4 @@
-package ru.otus.homework.util;
+package ru.otus.homework.util.impl;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -6,7 +6,7 @@ import ru.otus.homework.domain.Result;
 import ru.otus.homework.domain.ResultItem;
 import ru.otus.homework.domain.User;
 import ru.otus.homework.service.IOService;
-import ru.otus.homework.util.Interfaces.ResultInfoPrinter;
+import ru.otus.homework.util.ResultInfoPrinter;
 
 @Component
 public class ResultInfoImpl implements ResultInfoPrinter {

@@ -1,10 +1,9 @@
-package ru.otus.homework.util;
+package ru.otus.homework.util.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import ru.otus.homework.exception.StringReaderException;
-import ru.otus.homework.util.Interfaces.StringReader;
+import ru.otus.homework.util.StringReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;

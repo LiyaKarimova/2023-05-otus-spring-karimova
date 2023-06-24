@@ -1,10 +1,10 @@
-package ru.otus.homework.util;
+package ru.otus.homework.util.impl;
 
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import ru.otus.homework.domain.Question;
-import ru.otus.homework.util.Interfaces.StringToQuestionParser;
+import ru.otus.homework.util.StringToQuestionParser;
 
 @Component
 public class StringToQuestionParserImpl implements StringToQuestionParser {

@@ -3,7 +3,7 @@ package ru.otus.homework;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.otus.homework.service.TaskService;
-import ru.otus.homework.util.Interfaces.ResultInfoPrinter;
+import ru.otus.homework.util.ResultInfoPrinter;
 
 @Component
 @AllArgsConstructor

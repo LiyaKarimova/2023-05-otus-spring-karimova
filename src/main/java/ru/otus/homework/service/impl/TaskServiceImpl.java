@@ -1,4 +1,4 @@
-package ru.otus.homework.service;
+package ru.otus.homework.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,6 +7,9 @@ import ru.otus.homework.domain.Result;
 import ru.otus.homework.domain.Question;
 import ru.otus.homework.domain.ResultItem;
 import ru.otus.homework.domain.Answer;
+import ru.otus.homework.service.QuestionIOService;
+import ru.otus.homework.service.QuestionService;
+import ru.otus.homework.service.TaskService;
 import ru.otus.homework.util.AnswerToResultItemParser;
 import ru.otus.homework.util.AnswerToUserParser;
 
@@ -15,7 +18,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
-public class TaskServiceImpl implements TaskService{
+public class TaskServiceImpl implements TaskService {
 
     private final QuestionIOService questionIOService;
 
@@ -40,7 +43,7 @@ public class TaskServiceImpl implements TaskService{
 
     }
 
-    public Answer doQuestion (Question question) {
+    private Answer doQuestion (Question question) {
         questionIOService.printQuestion(question);
         return questionIOService.getAnswer();
     }

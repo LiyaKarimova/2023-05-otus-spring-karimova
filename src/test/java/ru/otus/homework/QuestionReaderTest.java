@@ -7,16 +7,15 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.otus.homework.domain.Question;
 import ru.otus.homework.exception.ParseException;;
-import ru.otus.homework.util.Interfaces.StringReader;
-import ru.otus.homework.util.Interfaces.StringToQuestionParser;
-import ru.otus.homework.util.QuestionReaderImpl;
+import ru.otus.homework.util.StringReader;
+import ru.otus.homework.util.StringToQuestionParser;
+import ru.otus.homework.util.impl.QuestionReaderImpl;
 
 import java.util.List;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

@@ -1,9 +1,10 @@
-package ru.otus.homework.service;
+package ru.otus.homework.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.otus.homework.dao.QuestionDao;
 import ru.otus.homework.domain.Question;
+import ru.otus.homework.service.QuestionService;
 
 import java.util.List;
 
