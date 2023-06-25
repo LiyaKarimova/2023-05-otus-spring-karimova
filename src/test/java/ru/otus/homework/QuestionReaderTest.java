@@ -32,7 +32,7 @@ public class QuestionReaderTest {
 
 //    @BeforeEach
 //    void prepare () {
-//        stringReader = new CSVResourceStringReader("questions.csv");
+//        stringReader = new CSVResourceStringReader("questionsRU.csv");
 //        stringToQuestionParser = new StringToQuestionParserImpl(",");
 //        questionReader = new QuestionReaderImpl(stringReader,stringToQuestionParser);
 //    }

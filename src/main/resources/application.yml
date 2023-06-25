@@ -1,0 +1,11 @@
+spring:
+  messages:
+    basename: "i18n/messages"
+    encoding: "UTF-8"
+
+question:
+  bundleFileName: "questionsFileName"
+  regex: ","
+
+application:
+  locale: en

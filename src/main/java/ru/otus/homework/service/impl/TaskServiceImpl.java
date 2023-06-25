@@ -1,7 +1,9 @@
 package ru.otus.homework.service.impl;
 
 import lombok.AllArgsConstructor;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
+import ru.otus.homework.config.AppProperties;
 import ru.otus.homework.domain.User;
 import ru.otus.homework.domain.Result;
 import ru.otus.homework.domain.Question;
@@ -28,9 +30,14 @@ public class TaskServiceImpl implements TaskService {
 
     private final AnswerToResultItemParser answerToResultItemParser;
 
+    private final MessageSource messageSource;
+
+    private final AppProperties properties;
+
     @Override
     public Result startTask() {
-        Question firstQuestion = new Question("Введите вашу фамилию и имя", null);
+        Question firstQuestion = new Question(messageSource.getMessage("userNameRequest",
+                null, properties.getLocale()), null);
         User user = answerToUserParser.getUser(doQuestion(firstQuestion));
         List <ResultItem> resultItemList = new ArrayList<>();
 

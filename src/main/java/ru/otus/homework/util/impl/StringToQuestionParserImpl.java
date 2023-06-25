@@ -12,7 +12,7 @@ public class StringToQuestionParserImpl implements StringToQuestionParser {
     @Setter
     private final String regex;
 
-    public StringToQuestionParserImpl(@Value("${file.regex}") String regex) {
+    public StringToQuestionParserImpl(@Value("${question.regex}") String regex) {
         this.regex = regex;
     }
 

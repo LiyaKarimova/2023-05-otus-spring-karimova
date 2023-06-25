@@ -1,7 +1,9 @@
 package ru.otus.homework.util.impl;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
+import ru.otus.homework.config.AppProperties;
 import ru.otus.homework.domain.Result;
 import ru.otus.homework.domain.ResultItem;
 import ru.otus.homework.domain.User;
@@ -13,8 +15,14 @@ public class ResultInfoImpl implements ResultInfoPrinter {
 
     private final IOService ioService;
 
-    public ResultInfoImpl(@Qualifier("IOServiceStream") IOService ioService) {
+    private final MessageSource messageSource;
+
+    private final AppProperties properties;
+
+    public ResultInfoImpl(@Qualifier("IOServiceStream") IOService ioService, MessageSource messageSource, AppProperties properties) {
         this.ioService = ioService;
+        this.messageSource = messageSource;
+        this.properties = properties;
     }
 
     @Override
@@ -24,15 +32,11 @@ public class ResultInfoImpl implements ResultInfoPrinter {
         User user = result.getUser();
         StringBuilder sb = new StringBuilder();
         String s = sb
-                .append("Пользователь ")
-                .append(user.getName())
+                .append(messageSource.getMessage("userResult", new String [] {user.getName(), user.getSurname()},properties.getLocale()))
                 .append(" ")
-                .append(user.getSurname())
-                .append(" набрал ")
                 .append(rightCount)
                 .append("/")
                 .append(allCount)
-                .append(" баллов")
                 .toString();
         ioService.printString(s);
     }
