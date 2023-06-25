@@ -36,8 +36,9 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Result startTask() {
-        Question firstQuestion = new Question(messageSource.getMessage("userNameRequest",
-                null, properties.getLocale()), null);
+        Question firstQuestion = new Question(
+                messageSource.getMessage("userNameRequest", null, properties.getLocale()),
+                null);
         User user = answerToUserParser.getUser(doQuestion(firstQuestion));
         List <ResultItem> resultItemList = new ArrayList<>();
 
