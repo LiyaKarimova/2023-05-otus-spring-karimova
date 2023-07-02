@@ -6,7 +6,7 @@ import ru.otus.homework.service.TaskService;
 import ru.otus.homework.util.ResultInfoPrinter;
 
 @Component
-public class TaskStarter implements CommandLineRunner {
+public class TaskStarter {
 
     private final ResultInfoPrinter resultInfoPrinter;
 
@@ -17,8 +17,7 @@ public class TaskStarter implements CommandLineRunner {
         this.taskService = taskService;
     }
 
-    @Override
-    public void run(String... args) {
-        resultInfoPrinter.printResult(taskService.startTask());
+    public void run(String userName, String userSurname) {
+        resultInfoPrinter.printResult(taskService.startTask(userName, userSurname));
     }
 }

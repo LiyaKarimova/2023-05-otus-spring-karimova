@@ -12,7 +12,6 @@ import ru.otus.homework.service.QuestionIOService;
 import ru.otus.homework.service.QuestionService;
 import ru.otus.homework.service.TaskService;
 import ru.otus.homework.util.AnswerToResultItemParser;
-import ru.otus.homework.util.AnswerToUserParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +24,14 @@ public class TaskServiceImpl implements TaskService {
 
     private final QuestionService questionService;
 
-    private final AnswerToUserParser answerToUserParser;
 
     private final AnswerToResultItemParser answerToResultItemParser;
 
     private final MessageService messageService;
 
     @Override
-    public Result startTask() {
-        Question firstQuestion = new Question(
-                messageService.getMessage("userNameRequest"),
-                null);
-        User user = answerToUserParser.getUser(doQuestion(firstQuestion));
+    public Result startTask(String userName, String userSurname) {
+        User user = new User(userName,userSurname);
         List <ResultItem> resultItemList = new ArrayList<>();
 
         List<Question> questionList = questionService.getQuestionList();
