@@ -1,10 +1,13 @@
-package ru.otus.homework;
+package ru.otus.homework.utilTests;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.otus.homework.domain.Question;
 import ru.otus.homework.exception.ParseException;;
 import ru.otus.homework.util.StringReader;
@@ -20,22 +23,16 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest (classes = {StringReader.class, StringToQuestionParser.class, QuestionReaderImpl.class})
 public class QuestionReaderTest {
 
-    @Mock
+    @MockBean
     private StringReader stringReader;
-    @Mock
+    @MockBean
     private StringToQuestionParser stringToQuestionParser;
-    @InjectMocks
+    @Autowired
     private QuestionReaderImpl questionReader;
 
-//    @BeforeEach
-//    void prepare () {
-//        stringReader = new CSVResourceStringReader("questionsRU.csv");
-//        stringToQuestionParser = new StringToQuestionParserImpl(",");
-//        questionReader = new QuestionReaderImpl(stringReader,stringToQuestionParser);
-//    }
 
     @DisplayName("Корректно возвращается список вопросов из файла")
     @Test
