@@ -2,16 +2,11 @@ package ru.otus.homework.serviceTests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import ru.otus.homework.dao.QuestionDao;
 import ru.otus.homework.dao.impl.QuestionDaoImpl;
 import ru.otus.homework.domain.Question;
-import ru.otus.homework.service.QuestionService;
 import ru.otus.homework.service.impl.QuestionServiceImpl;
 
 import java.util.List;

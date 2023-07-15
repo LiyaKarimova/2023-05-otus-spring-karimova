@@ -1,6 +1,5 @@
 package ru.otus.homework.runner;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ru.otus.homework.service.TaskService;
 import ru.otus.homework.util.ResultInfoPrinter;
