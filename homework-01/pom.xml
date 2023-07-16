@@ -2,23 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>2023-05-otus-spring-karimova</artifactId>
+        <groupId>ru.otus</groupId>
+        <version>1.0.0</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
-    <groupId>org.example</groupId>
-    <artifactId>2023-05-otus-spring-karimova</artifactId>
-    <version>1.0.0</version>
+    <artifactId>homework-01.1</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <maven-enforcer-plugin.version>3.1.0</maven-enforcer-plugin.version>
         <minimal.maven.version>3.3.9</minimal.maven.version>
@@ -77,7 +72,6 @@
         </dependency>
 
     </dependencies>
-
 
     <build>
         <plugins>
