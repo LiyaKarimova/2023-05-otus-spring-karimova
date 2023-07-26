@@ -12,10 +12,8 @@ public class Book {
 
     private final String title;
 
-    private final int year;
+    private final Long genre;
 
-    private final Genre genre;
-
-    private final Author author;
+    private final Long author;
 
 }
