@@ -1,10 +1,11 @@
 package ru.otus.homework2.domain;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Data
 public class Book {
 
@@ -12,8 +13,8 @@ public class Book {
 
     private final String title;
 
-    private final Long genre;
+    private Author author;
 
-    private final Long author;
+    private Genre genre;
 
 }
