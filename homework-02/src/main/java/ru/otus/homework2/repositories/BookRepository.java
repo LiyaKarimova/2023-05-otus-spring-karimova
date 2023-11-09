@@ -11,7 +11,7 @@ public interface BookRepository {
 
     List<Book> findAll();
 
-    long insert(Book book);
+    Book save(Book book);
 
     void deleteById(long id);
 }

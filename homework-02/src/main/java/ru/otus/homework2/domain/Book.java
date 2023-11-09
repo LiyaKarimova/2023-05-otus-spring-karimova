@@ -9,9 +9,9 @@ import lombok.RequiredArgsConstructor;
 @Data
 public class Book {
 
-    private final long id;
+    private long id;
 
-    private final String title;
+    private  String title;
 
     private Author author;
 

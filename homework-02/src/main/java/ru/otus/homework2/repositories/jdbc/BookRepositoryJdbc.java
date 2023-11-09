@@ -1,9 +1,11 @@
 package ru.otus.homework2.repositories.jdbc;
 
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 import ru.otus.homework2.repositories.BookRepository;
-import ru.otus.homework2.repositories.jdbc.mapper.BookMapper;
+import ru.otus.homework2.repositories.jdbc.mappers.BookMapper;
 import ru.otus.homework2.domain.Book;
 
 import java.util.Collections;
@@ -18,13 +20,6 @@ public class BookRepositoryJdbc implements BookRepository {
 
     public BookRepositoryJdbc(NamedParameterJdbcOperations namedParameterJdbcOperations) {
         this.namedParameterJdbcOperations = namedParameterJdbcOperations;
-    }
-
-    @Override
-    public long insert(Book book) {
-        return 0;
-//        namedParameterJdbcOperations.update("insert into books (id, title, genre, author) values :id, :title, :genre, :author",
-//                Map.of("id", book.getId(), "title", book.getTitle(), "genre", book.getGenre(), "author", book.getAuthor()));
     }
 
     @Override
@@ -65,6 +60,31 @@ public class BookRepositoryJdbc implements BookRepository {
         namedParameterJdbcOperations.update(
                 "delete from books where id = :id", params
         );
+    }
+
+    @Override
+    public Book save(Book book) {
+        if (book.getId() == 0) {
+            return insert(book);
+        }
+        return update(book);
+    }
+
+    private Book insert(Book book) {
+        var keyHolder = new GeneratedKeyHolder();
+
+        MapSqlParameterSource params = new MapSqlParameterSource(Map.of ( "title", book.getTitle(), "genre", book.getGenre().getId(), "author", book.getAuthor().getId()));
+        namedParameterJdbcOperations.update("insert into books (title, genreid, authorid) values :id, :title, :genre, :author",
+                params, keyHolder,new String[]{"id"});
+
+        book.setId(keyHolder.getKey().longValue());
+        return book;
+    }
+
+    private Book update(Book book) {
+        MapSqlParameterSource params = new MapSqlParameterSource(Map.of ( "id", book.getId(),"title", book.getTitle(), "genre", book.getGenre().getId(), "author", book.getAuthor().getId()));
+        namedParameterJdbcOperations.update ("update books set title = :title, genreid =:genre, authorid =: author where id =:id ", params);
+        return book;
     }
 
 }

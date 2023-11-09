@@ -1,4 +1,4 @@
-package ru.otus.homework2.repositories.jdbc.mapper;
+package ru.otus.homework2.repositories.jdbc.mappers;
 
 import org.springframework.jdbc.core.RowMapper;
 import ru.otus.homework2.domain.Author;
