@@ -23,7 +23,17 @@ public class BookRepositoryJpa implements BookRepository {
 
     @Override
     public Optional<Book> findById(long id) {
-        return Optional.ofNullable(em.find(Book.class, id));
+        EntityGraph <?> authorGenreEntityGraph = em.getEntityGraph("books-authors-genres-entity-graph");
+        TypedQuery <Book> query =  em.createQuery("select b from Book b where b.id = :id ", Book.class);
+        query.setParameter("id",id);
+        query.setHint(FETCH.getKey(), authorGenreEntityGraph);
+
+        try {
+            return Optional.of(query.getSingleResult());
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
+
     }
 
     @Override
