@@ -3,7 +3,7 @@ INSERT INTO authors ( `name`) values
                    ('Л.Н.Толстой'),
                    ('Л.М.Олкотт');
 
-INSERT INTO genres (`genretitle`) values
+INSERT INTO genres (`genre_title`) values
                    ('поэма'),
                    ('повесть'),
                    ('роман'),
@@ -11,7 +11,7 @@ INSERT INTO genres (`genretitle`) values
                    ('комедия'),
                    ('очерк');
 
-INSERT INTO books (`title`, `authorId`, `genreId` ) values
+INSERT INTO books (`title`, `author_id`, `genre_id` ) values
                    ('Анна Каренина', 2, 2),
                    ('Маленькие женщины', 3, 2),
                    ('Евгений Онегин', 1, 3);

@@ -6,6 +6,13 @@ spring:
     init:
       mode: always
       data-locations: testdata.sql
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      show-sql: true
+
 #    schema-locations: schema.sql
 #
 #  h2:
