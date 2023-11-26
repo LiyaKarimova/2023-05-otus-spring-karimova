@@ -2,13 +2,14 @@ package ru.otus.homework2.domain;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "books")
 @NamedEntityGraphs({
@@ -34,4 +35,13 @@ public class Book {
     @JoinColumn (name = "GenreId")
     private Genre genre;
 
+    @OneToMany (mappedBy = "book", fetch = FetchType.LAZY)
+    private List<Comment> commentsList;
+
+    public Book(long id, String title, Author author, Genre genre) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+    }
 }
