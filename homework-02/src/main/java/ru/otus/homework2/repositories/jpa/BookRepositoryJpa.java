@@ -57,10 +57,9 @@ public class BookRepositoryJpa implements BookRepository {
 
     @Override
     public void deleteById(long id) {
-        Query query = em.createQuery("delete " +
-                "from Book b " +
-                "where b.id = :id");
-        query.setParameter("id", id);
-        query.executeUpdate();
+        var book = em.find(Book.class, id);
+        if (book != null) {
+            em.remove(book);
+        }
     }
 }

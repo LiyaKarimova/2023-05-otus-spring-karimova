@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import ru.otus.homework2.domain.Author;
 import ru.otus.homework2.domain.Book;
+import ru.otus.homework2.domain.Comment;
 import ru.otus.homework2.domain.Genre;
 import ru.otus.homework2.repositories.jpa.BookRepositoryJpa;
 import ru.otus.homework2.repositories.jpa.GenreRepositoryJpa;
@@ -69,4 +70,16 @@ public class BookRepositoryTest {
                 .usingRecursiveComparison().isEqualTo(newBook);
 
     }
+
+    @DisplayName("должен удалять книгу со списком всех комментариев к ней")
+    @Test
+    void shouldDeleteBook () {
+        bookRepositoryJPA.deleteById(FIRST_BOOK_ID);
+        var updatedBookNumber = bookRepositoryJPA.findAll().size();
+        var commentListSize = em.createQuery("select c from Comment c where c.book.id = " + FIRST_BOOK_ID, Comment.class).getResultList();
+        assertThat(updatedBookNumber).isEqualTo(EXPECTED_NUMBER_OF_BOOKS - 1);
+        assertThat(commentListSize).hasSize(0);
+    }
+
+
 }

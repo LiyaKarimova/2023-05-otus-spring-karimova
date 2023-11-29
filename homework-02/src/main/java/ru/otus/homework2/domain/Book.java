@@ -36,7 +36,7 @@ public class Book {
     @JoinColumn (name = "GenreId")
     private Genre genre;
 
-    @OneToMany (mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "book", fetch = FetchType.LAZY,  cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> commentsList;
 
     public Book(long id, String title, Author author, Genre genre) {
