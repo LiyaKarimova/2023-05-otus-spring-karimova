@@ -2,6 +2,7 @@ package ru.otus.homework2.repositories.jpa;
 
 import jakarta.persistence.*;
 import org.springframework.stereotype.Repository;
+import ru.otus.homework2.domain.Book;
 import ru.otus.homework2.domain.Comment;
 import ru.otus.homework2.repositories.CommentRepository;
 
@@ -37,16 +38,28 @@ public class CommentRepositoryJpa implements CommentRepository {
 
     @Override
     public List<Comment> findByBook(long bookId) {
-        return null;
+        EntityGraph <?> entityGraph = em.getEntityGraph("comments-book-graph");
+        TypedQuery<Comment> query = em.createQuery("select c from Comment c where c.book.id = :bookId", Comment.class);
+        query.setParameter("bookId",bookId);
+        query.setHint(FETCH.getKey(),entityGraph);
+        return query.getResultList();
     }
 
     @Override
     public Comment save(Comment comment) {
-        return null;
+        if (comment.getId() == 0) {
+            em.persist(comment);
+            return comment;
+        }
+        return em.merge(comment);
     }
 
     @Override
     public void deleteById(long id) {
-
+        Query query = em.createQuery("delete " +
+                "from Comment c " +
+                "where c.id = :id");
+        query.setParameter("id", id);
+        query.executeUpdate();
     }
 }

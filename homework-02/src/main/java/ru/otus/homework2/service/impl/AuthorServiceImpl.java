@@ -1,4 +1,4 @@
-package ru.otus.homework2.service;
+package ru.otus.homework2.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

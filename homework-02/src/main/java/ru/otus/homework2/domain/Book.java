@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(name = "books")
 @NamedEntityGraphs({
         @NamedEntityGraph(name = "books-authors-genres-entity-graph",
@@ -35,7 +36,7 @@ public class Book {
     @JoinColumn (name = "GenreId")
     private Genre genre;
 
-    @OneToMany (mappedBy = "book", fetch = FetchType.LAZY)
+    @OneToMany (mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> commentsList;
 
     public Book(long id, String title, Author author, Genre genre) {

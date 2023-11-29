@@ -14,11 +14,11 @@ public class BookConverter {
     private final CommentConverter commentConverter;
 
     public String bookToString(Book book) {
-        return "Id: %d, title: %s, author: {%s}, genres: [%s], \n comments: [%s]".formatted(
+        return "Id: %d, title: %s, author: {%s}, genres: [%s]".formatted(
                 book.getId(),
                 book.getTitle(),
                 authorConverter.authorToString(book.getAuthor()),
-                genreConverter.genreToString(book.getGenre()),
-                commentConverter.commentListToString(book.getCommentsList()));
+                genreConverter.genreToString(book.getGenre()));
     }
+
 }

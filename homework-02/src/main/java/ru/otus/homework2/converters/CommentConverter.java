@@ -26,21 +26,13 @@ public class CommentConverter {
     }
 
 
-    public String commentWithBookToString (Comment comment) {
+    public String commentToStringWithBookInfo(Comment comment) {
         return ("Comment_id: %d, content: %s, Book: %s").formatted(
                 comment.getId(),
                 comment.getContent(),
                 comment.getBook().getTitle());
     }
 
-    public String commentListWithBookToString (List<Comment> commentList, Book book) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Book: ").append(book.getTitle()).append("\n");
-        commentList.forEach(c -> {
-            stringBuilder.append(commentToString(c)).append(";").append("\n");
-        });
 
-        return stringBuilder.toString();
-    }
 
 }
