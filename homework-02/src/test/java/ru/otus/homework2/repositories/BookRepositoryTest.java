@@ -45,7 +45,7 @@ public class BookRepositoryTest {
 
     @DisplayName("должен правильно искать книгу по айди")
     @Test
-    void shouldReturnCorrectAuthorById () {
+    void shouldReturnCorrectById () {
         var expectedBook = em.find(Book.class, FIRST_BOOK_ID);
         var bookFromRepo = bookRepositoryJPA.findById(FIRST_BOOK_ID);
 

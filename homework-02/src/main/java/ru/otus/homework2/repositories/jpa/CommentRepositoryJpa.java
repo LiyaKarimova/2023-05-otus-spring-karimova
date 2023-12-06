@@ -2,11 +2,9 @@ package ru.otus.homework2.repositories.jpa;
 
 import jakarta.persistence.*;
 import org.springframework.stereotype.Repository;
-import ru.otus.homework2.domain.Book;
 import ru.otus.homework2.domain.Comment;
 import ru.otus.homework2.repositories.CommentRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.data.jpa.repository.EntityGraph.EntityGraphType.FETCH;
@@ -34,15 +32,6 @@ public class CommentRepositoryJpa implements CommentRepository {
         } catch (NoResultException e) {
             return Optional.empty();
         }
-    }
-
-    @Override
-    public List<Comment> findByBook(long bookId) {
-        EntityGraph <?> entityGraph = em.getEntityGraph("comments-book-graph");
-        TypedQuery<Comment> query = em.createQuery("select c from Comment c where c.book.id = :bookId", Comment.class);
-        query.setParameter("bookId",bookId);
-        query.setHint(FETCH.getKey(),entityGraph);
-        return query.getResultList();
     }
 
     @Override

@@ -13,12 +13,6 @@ import java.util.List;
 @Entity
 @Builder
 @Table(name = "books")
-@NamedEntityGraphs({
-        @NamedEntityGraph(name = "books-authors-genres-entity-graph",
-                attributeNodes =
-                        {@NamedAttributeNode("genre"),
-                        @NamedAttributeNode("author")})
-})
 public class Book {
 
     @Id
@@ -28,15 +22,15 @@ public class Book {
     @Column (name = "title")
     private  String title;
 
-    @OneToOne (fetch = FetchType.LAZY)
+    @OneToOne (fetch = FetchType.EAGER)
     @JoinColumn (name = "AuthorId")
     private Author author;
 
-    @OneToOne (fetch = FetchType.LAZY)
+    @OneToOne (fetch = FetchType.EAGER)
     @JoinColumn (name = "GenreId")
     private Genre genre;
 
-    @OneToMany (mappedBy = "book", fetch = FetchType.LAZY,  cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> commentsList;
 
     public Book(long id, String title, Author author, Genre genre) {

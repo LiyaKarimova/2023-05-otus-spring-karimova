@@ -2,12 +2,14 @@ package ru.otus.homework2.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.otus.homework2.domain.Book;
 import ru.otus.homework2.domain.Comment;
 import ru.otus.homework2.exceptions.EntityNotFoundException;
 import ru.otus.homework2.repositories.BookRepository;
 import ru.otus.homework2.repositories.CommentRepository;
 import ru.otus.homework2.service.CommentService;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,15 +26,16 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    @Transactional (readOnly = true)
     public Optional<Comment> findById(long id) {
         return repository.findById(id);
     }
 
     @Override
-    @Transactional (readOnly = true)
+    @Transactional
     public List<Comment> findByBook(long bookId) {
-        return repository.findByBook(bookId);
+        List <Comment> comments = bookRepository.findById(bookId).map(Book::getCommentsList).
+                orElse(Collections.emptyList());
+        return comments.stream().toList();
     }
 
     @Override

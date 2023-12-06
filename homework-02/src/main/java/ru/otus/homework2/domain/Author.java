@@ -9,7 +9,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GenerationType;
 
 import lombok.*;
-import org.springframework.stereotype.Service;
 
 
 @AllArgsConstructor
