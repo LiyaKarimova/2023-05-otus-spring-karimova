@@ -20,7 +20,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
-@SpringBootTest
+@SpringBootTest (classes = {BookServiceImpl.class, BookRepositoryJpa.class, AuthorRepositoryJpa.class,GenreRepositoryJpa.class})
 public class BookServiceTest {
 
     private final int FIRST_BOOK_ID = 1;

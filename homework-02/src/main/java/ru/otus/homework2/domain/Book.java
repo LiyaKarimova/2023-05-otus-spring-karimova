@@ -3,6 +3,8 @@ package ru.otus.homework2.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
 
@@ -13,6 +15,12 @@ import java.util.List;
 @Entity
 @Builder
 @Table(name = "books")
+@NamedEntityGraphs({
+        @NamedEntityGraph(name = "books-authors-genres-entity-graph",
+                attributeNodes =
+                        {@NamedAttributeNode("genre"),
+                                @NamedAttributeNode("author")})
+})
 public class Book {
 
     @Id

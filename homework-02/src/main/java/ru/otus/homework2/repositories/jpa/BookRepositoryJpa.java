@@ -8,6 +8,8 @@ import ru.otus.homework2.repositories.BookRepository;
 import java.util.List;
 import java.util.Optional;
 
+import static org.springframework.data.jpa.repository.EntityGraph.EntityGraphType.FETCH;
+
 
 @Repository
 public class BookRepositoryJpa implements BookRepository {
@@ -33,7 +35,12 @@ public class BookRepositoryJpa implements BookRepository {
 
     @Override
     public List <Book> findAll() {
-        return em.createQuery("select b from Book b", Book.class).getResultList();
+        EntityGraph <?> authorGenreEntityGraph = em.getEntityGraph("books-authors-genres-entity-graph");
+
+        TypedQuery <Book> query =  em.createQuery("select b from Book b", Book.class);
+        query.setHint(FETCH.getKey(), authorGenreEntityGraph);
+
+        return query.getResultList();
     }
 
     @Override
