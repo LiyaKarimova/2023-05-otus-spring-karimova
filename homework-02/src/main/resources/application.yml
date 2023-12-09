@@ -14,8 +14,15 @@ spring:
       ddl-auto: none
       show-sql: true
 
+
   h2:
     console:
       path: h2-console
       settings:
       web-allow-others: true
+
+logging:
+  file:
+    name: ./logs/applog.log
+  level:
+    org.hibernate.SQL: debug
