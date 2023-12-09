@@ -3,8 +3,6 @@ package ru.otus.homework2.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
 
@@ -38,7 +36,7 @@ public class Book {
     @JoinColumn (name = "GenreId")
     private Genre genre;
 
-    @OneToMany (mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (mappedBy = "book", cascade = CascadeType.ALL)
     private List<Comment> commentsList;
 
     public Book(long id, String title, Author author, Genre genre) {
