@@ -1,17 +1,21 @@
-package ru.otus.homework2.service;
+package ru.otus.homework2.service.impl;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.homework2.domain.Author;
 import ru.otus.homework2.repositories.AuthorRepository;
+import ru.otus.homework2.service.AuthorService;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepository authorRepository;
+
+    public AuthorServiceImpl(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
 
     @Override
     public List<Author> findAll() {

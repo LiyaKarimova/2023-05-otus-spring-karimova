@@ -1,14 +1,22 @@
 package ru.otus.homework2.domain;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
-@RequiredArgsConstructor
-@Data
+@Getter
+@Setter
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Table (name = "genres")
 public class Genre {
-    private final long id;
 
-    private final String genreTitle;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column (name = "genreTitle")
+    private  String genreTitle;
 
 
 }

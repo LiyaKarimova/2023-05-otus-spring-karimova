@@ -1,11 +1,13 @@
-package ru.otus.homework2.service;
+package ru.otus.homework2.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.homework2.domain.Book;
 import ru.otus.homework2.exceptions.EntityNotFoundException;
 import ru.otus.homework2.repositories.AuthorRepository;
 import ru.otus.homework2.repositories.BookRepository;
 import ru.otus.homework2.repositories.GenreRepository;
+import ru.otus.homework2.service.BookService;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,19 +38,23 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public Book insert(String title, long authorId, long genreId) {
         return save(0, title, authorId, genreId);
     }
 
     @Override
+    @Transactional
     public Book update(long id, String title, long authorId, long genreId) {
         return save(id, title, authorId, genreId);
     }
 
     @Override
+    @Transactional
     public void deleteById(long id) {
         bookRepository.deleteById(id);
     }
+
 
     private Book save(long id, String title, long authorId, long genreId) {
         var author = authorRepository.findById(authorId)
