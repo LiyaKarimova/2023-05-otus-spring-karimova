@@ -31,7 +31,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    @Transactional
+    @Transactional (readOnly = true)
     public List<Comment> findByBook(long bookId) {
         List <Comment> comments = bookRepository.findById(bookId).map(Book::getCommentsList).
                 orElse(Collections.emptyList());
